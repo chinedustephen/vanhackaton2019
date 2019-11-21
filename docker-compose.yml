@@ -3,7 +3,7 @@ version: '3'
 services:
   nodejs:
     build:
-      context: .
+      context: ./server
       dockerfile: Dockerfile
     image: nodejs
     container_name: nodejs
@@ -17,7 +17,7 @@ services:
   
   reactjs:
     build:
-      context: .
+      context: ./client
       dockerfile: Dockerfile
     image: reactjs
     container_name: reactjs
@@ -30,7 +30,6 @@ services:
       - app-network
 
   mysql:
-    env_file: ./.env
     image: mysql:5.7
     container_name: mysql
     volumes:
@@ -39,7 +38,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      "MYSQL_DATABASE": "test"
+      "MYSQL_DATABASE": "vanhack"
       "MYSQL_ROOT_PASSWORD": "dxbjj1"
     networks:
       - app-network
