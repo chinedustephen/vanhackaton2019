@@ -3,12 +3,12 @@ version: '3'
 services:
   nodejs:
     build:
-      context: ./server
+      context: ./backend
       dockerfile: Dockerfile
     image: nodejs
     container_name: nodejs
     volumes:
-      - ./:/app/server
+      - ./:/app/backend
     restart: unless-stopped
     ports:
       - "5000:5000"
@@ -17,12 +17,12 @@ services:
   
   reactjs:
     build:
-      context: ./client
+      context: ./frontend
       dockerfile: Dockerfile
     image: reactjs
     container_name: reactjs
     volumes:
-      - ./:/app/client
+      - ./:/app/frontend
     restart: unless-stopped
     ports:
       - "3000:3000"
