@@ -1,0 +1,34 @@
+{
+  "name": "stephenvanhackathon",
+  "version": "1.0.0",
+  "description": "This project seeks to solve premium class management on vanhack",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinedustephen/vanhackaton2019.git"
+  },
+  "author": "stephennkwocha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chinedustephen/vanhackaton2019/issues"
+  },
+  "homepage": "https://github.com/chinedustephen/vanhackaton2019#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.0.0",
+    "nodemon": "^1.19.4",
+    "sequelize": "^5.21.2",
+    "sequelize-cli": "^5.5.1"
+  }
+}

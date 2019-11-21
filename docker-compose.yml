@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    volumes:
+      - ./:/app/server
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+  
+  reactjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: reactjs
+    container_name: reactjs
+    volumes:
+      - ./:/app/client
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  mysql:
+    env_file: ./.env
+    image: mysql:5.7
+    container_name: mysql
+    volumes:
+      - ./data/db:/var/lib/mysql
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      "MYSQL_DATABASE": "test"
+      "MYSQL_ROOT_PASSWORD": "dxbjj1"
+    networks:
+      - app-network
+
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+    depends_on:
+      - nodejs
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+  
